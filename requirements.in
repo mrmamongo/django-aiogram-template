@@ -1,0 +1,10 @@
+django==5.0.*
+psycopg2-binary
+aiogram==3.*
+django-asgi-lifespan==0.3.*
+redis==5.*
+ruff==0.4.*
+uvicorn==0.29.*
+django-environ==0.11.*
+gunicorn==22.*
+django-jazzmin==3.*
