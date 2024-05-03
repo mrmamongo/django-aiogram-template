@@ -12,9 +12,14 @@ RUN apt-get update && \
     apt-get install -y tini && \
     python3 -m venv venv
 
-COPY ./requirements.txt ./manage.py ./
+COPY ./requirements.in ./manage.py ./
+RUN pip install --no-input pip-tools && \
+    pip-compile -o requirements.txt ./requirements.in && \
+    pip uninstall --no-input -y pip-tools && \
+    pip install -r requirements.txt
+
 COPY ./template ./template/
-RUN pip install -r requirements.txt && python ./manage.py collectstatic --noinput
+RUN python ./manage.py collectstatic --noinput
 
 FROM staging as dev
 
