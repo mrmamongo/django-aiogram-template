@@ -2,7 +2,7 @@ services:
   postgres:
     image: postgres:15-alpine
     restart: unless-stopped
-    env_file: deploy/postgres.env
+    env_file: deploy/database.env
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     ports:
